@@ -1,7 +1,12 @@
 /.vs/
+
 /build/bin/
-obj/
-/dist/
-/packages/
 /src/bin/
+
+/dist/
+
+/packages/
+/.dotnet/
 /tools/
+
+obj/
