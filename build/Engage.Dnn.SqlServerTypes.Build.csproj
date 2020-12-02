@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Frosting" Version="1.0.0-rc0001" />
+    <PackageReference Include="Cake.NuGet" Version="1.0.0-rc0001" />
     <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
   </ItemGroup>
 </Project>

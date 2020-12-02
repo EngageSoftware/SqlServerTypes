@@ -1,6 +1,11 @@
 namespace Engage.Dnn.SqlServerTypes.Build
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Cake.Core.Configuration;
     using Cake.Frosting;
+    using Cake.NuGet;
 
     public class Program : IFrostingStartup
     {
@@ -20,6 +25,11 @@ namespace Engage.Dnn.SqlServerTypes.Build
             services.UseContext<Context>();
             services.UseLifetime<Lifetime>();
             services.UseWorkingDirectory("..");
+            
+            var module = new NuGetModule(new CakeConfiguration(new Dictionary<string, string>()));
+            module.Register(services);
+
+            services.UseTool(new Uri("nuget:?package=NuGet.CommandLine&version=5.8.0"));
         }
     }
 }
