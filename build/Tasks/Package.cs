@@ -2,12 +2,13 @@ namespace Engage.Dnn.SqlServerTypes.Build.Tasks
 {
     using System.Linq;
 
-    using Cake.Common.Build;
     using Cake.Common.Diagnostics;
     using Cake.Common.IO;
     using Cake.Common.IO.Paths;
     using Cake.Common.Solution.Project.Properties;
     using Cake.Common.Tools.MSBuild;
+    using Cake.Common.Tools.NuGet;
+    using Cake.Common.Tools.NuGet.Restore;
     using Cake.Common.Xml;
     using Cake.Core.Diagnostics;
     using Cake.Core.IO;
@@ -19,7 +20,10 @@ namespace Engage.Dnn.SqlServerTypes.Build.Tasks
         {
             var version = ReadVersion(context);
             SetAssemblyInfoVersion(context, version);
-            CleanAndBuild(context);
+
+            var sln = context.File("Engage.Dnn.SqlServerTypes.sln");
+            context.NuGetRestore(sln, new NuGetRestoreSettings { Verbosity = NuGetVerbosity.Quiet });
+            CleanAndBuild(context, sln);
 
             var dist = context.Directory("dist");
             var (pkg, pkgBin) = CreateAndCleanDist(context, dist);
@@ -66,13 +70,13 @@ namespace Engage.Dnn.SqlServerTypes.Build.Tasks
             context.XmlPoke(manifest, "//assembly[name/text()=\"SqlServerSpatial140.dll\"]/version", version);
         }
 
-        private static void CleanAndBuild(Context context)
+        private static void CleanAndBuild(Context context, FilePath sln)
         {
             var settings = new MSBuildSettings { Configuration = "Release", MaxCpuCount = 0, Verbosity = Verbosity.Minimal, }
                 .WithRestore()
                 .WithTarget("clean")
                 .WithTarget("build");
-            context.MSBuild("Engage.Dnn.SqlServerTypes.sln", settings);
+            context.MSBuild(sln, settings);
         }
 
         private static void SetAssemblyInfoVersion(Context context, string version)
