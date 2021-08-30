@@ -7,7 +7,7 @@
     <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Frosting" Version="1.1.0" />
+    <PackageReference Include="Cake.Frosting" Version="1.2.0" />
     <PackageReference Include="Cake.NuGet" Version="1.2.0" />
     <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
   </ItemGroup>
