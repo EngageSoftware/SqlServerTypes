@@ -4,7 +4,7 @@ namespace Engage.Dnn.SqlServerTypes.Build.Tasks
 
     using JetBrains.Annotations;
 
-    [Dependency(typeof(Package))]
+    [IsDependentOn(typeof(Package))]
     [UsedImplicitly]
     public sealed class Default : FrostingTask<Context>
     {
