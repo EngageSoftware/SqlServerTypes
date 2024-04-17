@@ -25,23 +25,13 @@
             </assembly>
             <assembly>
               <path>bin/SqlServerTypes/x64</path>
-              <name>SqlServerSpatial140.dll</name>
-              <version>0.0.0</version>
-            </assembly>
-            <assembly>
-              <path>bin/SqlServerTypes/x64</path>
-              <name>msvcr120.dll</name>
-              <version>12.0.40649.5</version>
-            </assembly>
-            <assembly>
-              <path>bin/SqlServerTypes/x86</path>
-              <name>SqlServerSpatial140.dll</name>
+              <name>SqlServerSpatial160.dll</name>
               <version>0.0.0</version>
             </assembly>
             <assembly>
               <path>bin/SqlServerTypes/x86</path>
-              <name>msvcr120.dll</name>
-              <version>12.0.40649.5</version>
+              <name>SqlServerSpatial160.dll</name>
+              <version>0.0.0</version>
             </assembly>
           </assemblies>
         </component>
