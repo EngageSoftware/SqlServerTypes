@@ -13,8 +13,8 @@
         public static void LoadNativeAssemblies(string rootApplicationPath)
         {
             var nativeBinaryPath = IntPtr.Size > 4
-                ? Path.Combine(rootApplicationPath, @"SqlServerTypes\x64\")
-                : Path.Combine(rootApplicationPath, @"SqlServerTypes\x86\");
+                ? Path.Combine(rootApplicationPath, @"x64\")
+                : Path.Combine(rootApplicationPath, @"x86\");
 
             LoadNativeAssembly(nativeBinaryPath, "SqlServerSpatial160.dll");
         }
