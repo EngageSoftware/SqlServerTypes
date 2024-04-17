@@ -67,7 +67,7 @@ namespace Engage.Dnn.SqlServerTypes.Build.Tasks
             context.XmlPoke(manifest, "//package/@version", version);
             context.XmlPoke(manifest, "//assembly[name/text()=\"Engage.Dnn.SqlServerTypes.dll\"]/version", version);
             context.XmlPoke(manifest, "//assembly[name/text()=\"Microsoft.SqlServer.Types.dll\"]/version", version);
-            context.XmlPoke(manifest, "//assembly[name/text()=\"SqlServerSpatial140.dll\"]/version", version);
+            context.XmlPoke(manifest, "//assembly[name/text()=\"SqlServerSpatial160.dll\"]/version", version);
         }
 
         private static void CleanAndBuild(Context context, FilePath sln)
@@ -86,22 +86,22 @@ namespace Engage.Dnn.SqlServerTypes.Build.Tasks
             context.CreateAssemblyInfo(
                 assemblyInfoPath,
                 new AssemblyInfoSettings
-                    {
-                        Version = version,
-                        FileVersion = version,
-                        InformationalVersion = version,
-                        Company = assemblyInfo.Company,
-                        Configuration = assemblyInfo.Configuration,
-                        CLSCompliant = assemblyInfo.ClsCompliant,
-                        Copyright = assemblyInfo.Copyright,
-                        Description = assemblyInfo.Description,
-                        Guid = string.IsNullOrWhiteSpace(assemblyInfo.Guid) ? null : assemblyInfo.Guid,
-                        Product = assemblyInfo.Product,
-                        Title = assemblyInfo.Title,
-                        Trademark = assemblyInfo.Trademark,
-                        ComVisible = assemblyInfo.ComVisible,
-                        InternalsVisibleTo = assemblyInfo.InternalsVisibleTo,
-                    });
+                {
+                    Version = version,
+                    FileVersion = version,
+                    InformationalVersion = version,
+                    Company = assemblyInfo.Company,
+                    Configuration = assemblyInfo.Configuration,
+                    CLSCompliant = assemblyInfo.ClsCompliant,
+                    Copyright = assemblyInfo.Copyright,
+                    Description = assemblyInfo.Description,
+                    Guid = string.IsNullOrWhiteSpace(assemblyInfo.Guid) ? null : assemblyInfo.Guid,
+                    Product = assemblyInfo.Product,
+                    Title = assemblyInfo.Title,
+                    Trademark = assemblyInfo.Trademark,
+                    ComVisible = assemblyInfo.ComVisible,
+                    InternalsVisibleTo = assemblyInfo.InternalsVisibleTo,
+                });
         }
     }
 }
