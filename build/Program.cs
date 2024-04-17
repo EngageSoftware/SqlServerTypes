@@ -11,7 +11,7 @@ namespace Engage.Dnn.SqlServerTypes.Build
             return new CakeHost()
                 .UseContext<Context>()
                 .UseWorkingDirectory("..")
-                .InstallTool(new Uri("nuget:?package=NuGet.CommandLine&version=5.9.1"))
+                .InstallTool(new Uri("nuget:?package=NuGet.CommandLine&version=6.9.1"))
                 .Run(args);
         }
     }
