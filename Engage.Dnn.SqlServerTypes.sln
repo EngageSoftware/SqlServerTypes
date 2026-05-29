@@ -7,6 +7,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engage.Dnn.SqlServerTypes",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engage.Dnn.SqlServerTypes.Build", "build\Engage.Dnn.SqlServerTypes.Build.csproj", "{C9114CCE-983F-41E1-BE83-94725516B644}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{3667A1AC-6296-4E14-BF35-120CD5405B0A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{56783E23-FE40-42EC-8601-6FD369A7577B}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main.yml = .github\workflows\main.yml
+		.github\workflows\zizmor.yml = .github\workflows\zizmor.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,5 +38,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E4C8D96C-6B4B-4829-86C3-40E9C1413C18}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{56783E23-FE40-42EC-8601-6FD369A7577B} = {3667A1AC-6296-4E14-BF35-120CD5405B0A}
 	EndGlobalSection
 EndGlobal
