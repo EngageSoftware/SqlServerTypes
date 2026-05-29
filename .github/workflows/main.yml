@@ -2,13 +2,13 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -24,19 +24,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v6
-      
+
       - uses: actions/setup-dotnet@v5.3.0
         with:
-          dotnet-version: '8.0.x'
-      
+          global-json-file: "global.json"
+
       - name: Build with Cake
         run: ./build.ps1
         shell: pwsh
-        
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/*.zip
           archive: false
-        
