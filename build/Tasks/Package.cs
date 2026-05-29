@@ -1,16 +1,12 @@
 namespace Engage.Dnn.SqlServerTypes.Build.Tasks
 {
-    using System.Linq;
-
     using Cake.Common.Diagnostics;
     using Cake.Common.IO;
     using Cake.Common.IO.Paths;
     using Cake.Common.Solution.Project.Properties;
-    using Cake.Common.Tools.MSBuild;
-    using Cake.Common.Tools.NuGet;
-    using Cake.Common.Tools.NuGet.Restore;
+    using Cake.Common.Tools.DotNet;
+    using Cake.Common.Tools.DotNet.Build;
     using Cake.Common.Xml;
-    using Cake.Core.Diagnostics;
     using Cake.Core.IO;
     using Cake.Frosting;
 
@@ -22,7 +18,7 @@ namespace Engage.Dnn.SqlServerTypes.Build.Tasks
             SetAssemblyInfoVersion(context, version);
 
             var sln = context.File("Engage.Dnn.SqlServerTypes.sln");
-            context.NuGetRestore(sln, new NuGetRestoreSettings { Verbosity = NuGetVerbosity.Quiet });
+            context.DotNetRestore();
             CleanAndBuild(context, sln);
 
             var dist = context.Directory("dist");
@@ -50,8 +46,8 @@ namespace Engage.Dnn.SqlServerTypes.Build.Tasks
 
         private static string ReadVersion(Context context)
         {
-            var packagesConfig = context.File("src/packages.config");
-            var version = context.XmlPeek(packagesConfig, "//package[@id=\"Microsoft.SqlServer.Types\"]/@version");
+            var projectFile = context.File("src/Engage.Dnn.SqlServerTypes.csproj");
+            var version = context.XmlPeek(projectFile, "//PackageReference[@Include=\"Microsoft.SqlServer.Types\"]/@Version");
             context.Information($"Microsoft.SqlServer.Types NuGet package version {version}");
             return version;
         }
@@ -72,11 +68,8 @@ namespace Engage.Dnn.SqlServerTypes.Build.Tasks
 
         private static void CleanAndBuild(Context context, FilePath sln)
         {
-            var settings = new MSBuildSettings { Configuration = "Release", MaxCpuCount = 0, Verbosity = Verbosity.Minimal, }
-                .WithRestore()
-                .WithTarget("clean")
-                .WithTarget("build");
-            context.MSBuild(sln, settings);
+            context.DotNetClean(sln.FullPath);
+            context.DotNetBuild(sln.FullPath, new DotNetBuildSettings { Configuration = "Release" });
         }
 
         private static void SetAssemblyInfoVersion(Context context, string version)
