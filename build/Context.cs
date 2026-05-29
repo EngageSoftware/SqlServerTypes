@@ -1,13 +1,12 @@
-namespace Engage.Dnn.SqlServerTypes.Build
-{
-    using Cake.Core;
-    using Cake.Frosting;
+namespace Engage.Dnn.SqlServerTypes.Build;
 
-    public class Context : FrostingContext
+using Cake.Core;
+using Cake.Frosting;
+
+public class Context : FrostingContext
+{
+    public Context(ICakeContext context)
+        : base(context)
     {
-        public Context(ICakeContext context)
-            : base(context)
-        {
-        }
     }
 }
