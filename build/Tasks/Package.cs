@@ -6,7 +6,10 @@ using Cake.Common.IO.Paths;
 using Cake.Common.Solution.Project.Properties;
 using Cake.Common.Tools.DotNet;
 using Cake.Common.Tools.DotNet.Build;
+using Cake.Common.Tools.DotNet.Clean;
+using Cake.Common.Tools.DotNet.Restore;
 using Cake.Common.Xml;
+using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Frosting;
 
@@ -18,7 +21,7 @@ public sealed class Package : FrostingTask<Context>
         SetAssemblyInfoVersion(context, version);
 
         var sln = context.File("Engage.Dnn.SqlServerTypes.sln");
-        context.DotNetRestore();
+        context.DotNetRestore(new DotNetRestoreSettings{ Verbosity = ToDotNetVerbosity(context.Log.Verbosity), });
         CleanAndBuild(context, sln);
 
         var dist = context.Directory("dist");
@@ -68,8 +71,20 @@ public sealed class Package : FrostingTask<Context>
 
     private static void CleanAndBuild(Context context, FilePath sln)
     {
-        context.DotNetClean(sln.FullPath);
-        context.DotNetBuild(sln.FullPath, new DotNetBuildSettings { Configuration = "Release" });
+        context.DotNetClean(sln.FullPath, new DotNetCleanSettings { Verbosity = ToDotNetVerbosity(context.Log.Verbosity), });
+        context.DotNetBuild(sln.FullPath, new DotNetBuildSettings { Configuration = "Release", Verbosity = ToDotNetVerbosity(context.Log.Verbosity), });
+    }
+
+    private static DotNetVerbosity ToDotNetVerbosity(Verbosity verbosity)
+    {
+        return verbosity switch
+        {
+            Verbosity.Quiet => DotNetVerbosity.Quiet,
+            Verbosity.Minimal => DotNetVerbosity.Minimal,
+            Verbosity.Normal => DotNetVerbosity.Normal,
+            Verbosity.Verbose => DotNetVerbosity.Detailed,
+            _ => DotNetVerbosity.Diagnostic
+        };
     }
 
     private static void SetAssemblyInfoVersion(Context context, string version)
