@@ -58,7 +58,7 @@ public sealed class Package : FrostingTask<Context>
     private static void CopyPackageFiles(Context context, DirectoryPath pkgBin, FilePath manifest)
     {
         context.CopyFiles("src/bin/Release/**/*.dll", pkgBin, preserveFolderStructure: true);
-        context.CopyFile("src/bin/Release/Engage.Dnn.SqlServerTypes.dnn", manifest);
+        context.CopyFile("src/bin/Release/net472/Engage.Dnn.SqlServerTypes.dnn", manifest);
     }
 
     private static void SetManifestVersions(Context context, FilePath manifest, string version)
