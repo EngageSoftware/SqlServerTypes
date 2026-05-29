@@ -14,7 +14,7 @@ using System;
 [assembly: AssemblyVersion("160.1000.6")]
 [assembly: AssemblyFileVersion("160.1000.6")]
 [assembly: AssemblyInformationalVersion("160.1000.6")]
-[assembly: AssemblyCopyright("Copyright © Engage 2024")]
+[assembly: AssemblyCopyright("Copyright © Engage 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: ComVisible(false)]
