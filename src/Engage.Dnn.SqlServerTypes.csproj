@@ -8,7 +8,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.SqlServer.Types" Version="160.1000.6" />
+    <PackageReference Include="Microsoft.SqlServer.Types" Version="170.1000.7" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Engage.Dnn.SqlServerTypes.dnn">
