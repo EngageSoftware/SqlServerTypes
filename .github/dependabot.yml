@@ -1,7 +1,14 @@
 version: 2
 updates:
   - package-ecosystem: "nuget"
-    directory: "/"
+    directory: "/src"
+    schedule:
+      interval: "daily"
+    cooldown:
+      default-days: 7
+
+  - package-ecosystem: "nuget"
+    directory: "/build"
     schedule:
       interval: "daily"
     cooldown:
