@@ -16,7 +16,7 @@
                 ? Path.Combine(rootApplicationPath, @"x64\")
                 : Path.Combine(rootApplicationPath, @"x86\");
 
-            LoadNativeAssembly(nativeBinaryPath, "SqlServerSpatial160.dll");
+            LoadNativeAssembly(nativeBinaryPath, "SqlServerSpatial170.dll");
         }
 
         private static void LoadNativeAssembly(string nativeBinaryPath, string assemblyName)
