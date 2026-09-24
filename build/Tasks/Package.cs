@@ -66,7 +66,7 @@ public sealed class Package : FrostingTask<Context>
         context.XmlPoke(manifest, "//package/@version", version);
         context.XmlPoke(manifest, "//assembly[name/text()=\"Engage.Dnn.SqlServerTypes.dll\"]/version", version);
         context.XmlPoke(manifest, "//assembly[name/text()=\"Microsoft.SqlServer.Types.dll\"]/version", version);
-        context.XmlPoke(manifest, "//assembly[name/text()=\"SqlServerSpatial160.dll\"]/version", version);
+        context.XmlPoke(manifest, "//assembly[name/text()=\"SqlServerSpatial170.dll\"]/version", version);
     }
 
     private static void CleanAndBuild(Context context, FilePath sln)
