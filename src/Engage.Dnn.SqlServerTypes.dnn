@@ -25,12 +25,12 @@
             </assembly>
             <assembly>
               <path>bin/x64</path>
-              <name>SqlServerSpatial160.dll</name>
+              <name>SqlServerSpatial170.dll</name>
               <version>0.0.0</version>
             </assembly>
             <assembly>
               <path>bin/x86</path>
-              <name>SqlServerSpatial160.dll</name>
+              <name>SqlServerSpatial170.dll</name>
               <version>0.0.0</version>
             </assembly>
           </assemblies>
