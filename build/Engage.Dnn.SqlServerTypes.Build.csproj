@@ -11,5 +11,6 @@
     <PackageReference Include="Cake.NuGet" Version="6.3.0" />
     <PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
     <PackageReference Include="NuGet.Packaging" Version="7.9.0" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
   </ItemGroup>
 </Project>
